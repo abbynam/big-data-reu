@@ -20,9 +20,9 @@ pip install pyyaml
 **Do not launch an interactive session or any conda environment**  
 OR if you do not want to pip install libraries so that you don't overload your home directory, use the ```submit_gridsearch.sh``` shell script (further information below)
 
-**TRAINING**
-cd runs
-mkdir (run_id) (usernameDataRunName, EX: mzhao7.8.2025test_Grid)  
+**TRAINING**  
+```cd runs```
+```mkdir (run_id)``` (usernameDataRunName, EX: mzhao7.8.2025test_Grid)  
 
 Copy over the associated gridsearch file for the model
 
