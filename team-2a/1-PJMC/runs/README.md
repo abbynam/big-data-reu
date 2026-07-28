@@ -24,9 +24,9 @@ Then run the command: source ~/bashrc to update. If it worked, you should see no
 **Creating a run** 
 Start an interactive job using the following command: 
 
-'''
+```
 srun --cluster=chip-cpu --account=cybertrn --qos=shared --time=02:50:00 --mem=16G --pty /bin/bash
-'''
+```
 
 Then, navigate to 1-PJMC/runs and copy the example run. Rename it appropriately. 
 
