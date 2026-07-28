@@ -1,0 +1,86 @@
+Reproduction steps (no need to leave this folder)
+
+---
+You will reach many errors if you don't do this first:
+
+Edit your ~/.bashrc (for instance, `vi ~/bashrc` or `nano ~/bashrc`) and add these lines:
+
+	# from Vijay
+	module load ROOT/6.24.06-foss-2021b
+
+	source /umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/bin/geant4.sh
+
+	###DATA FILES
+	export G4ENSDFSTATEDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4ENSDFSTATE2.3
+	export G4PARTICLEXSDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4PARTICLEXS3.1.1
+	export G4LEDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4EMLOW7.13
+	export G4LEVELGAMMADATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/PhotonEvaporation5.7
+	export G4NEUTRONHPDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4NDL4.6
+	export G4ABLADATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4ABLA3.1
+	export G4INCLDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4INCL1.0
+	export G4PIIDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4PII1.3
+	export G4RADIOACTIVEDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/RadioactiveDecay5.6
+	export G4REALSURFACEDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/RealSurface2.2
+	export G4SAIDXSDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4SAIDDATA2.0
+
+Then reload the file with:
+	source ~/.bashrc
+---
+
+Launch interactive session on the cpu nodes:
+	srun --cluster=chip-cpu --account=cybertrn --partition=match --qos=shared --time=02:50:00 --mem=16G --pty /bin/bash
+
+Launch the appropriate conda env:
+	conda activate pjmc_conda
+
+You should now have a command prompt which looks like
+	(your_env) you@cpu-nodes$
+
+Send the SLURM script:
+	sbatch run.slurm
+
+Combine the many root files into one:
+	hadd root/compiled.root root/Team2*.root
+
+---
+
+If you receive this error: No command named 'hadd'
+
+This happened to most of us. I'm not sure if the problem will persist
+
+To fix (yes, again):
+       module load ROOT/6.24.06-foss-2021b 
+
+---
+
+Convert the root to csv data:
+	python ../../scripts/converter_core.py "$(pwd)"
+
+---
+
+If you receive this error: No module named 'numpy.core._multiarray_umath'
+
+That's what happened to me too. I think chip's environmental variables are overwriting ours.
+
+Check if these are correct, they weren't for me:
+	echo $PYTHONPATH
+	echo $LD_LIBRARY_PATH
+To fix:
+	unset PYTHONPATH <-- this was the important one for me
+	unset LD_LIBRARY_PATH
+(Optional):
+	conda deactivate
+	conda activate pjmc_conda
+---
+
+If you receive this error: No module named 'uproot'
+
+This happened to most of us. I'm not sure if the problem will persist
+
+To fix:
+        pip install uproot
+
+---
+
+Output:
+	csv/<file>.csv
