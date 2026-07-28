@@ -40,5 +40,6 @@ OUTPUT_FOLDER_PATH = 6_OUTPUT/1-CORE_out/triples_run25_sbp/
 	Make sure the output folder exists:
 	```mkdir -p 6_OUTPUT/2-plotter/triples_run25_sbp/```
 
-```python3 5_SCRIPTS/recon_plotter_ummc.py 6_OUTPUT/1-CORE_out/triples_run25_sbp/output.dat 6_OUTPUT/2-plotter/triples_run25_sbp```
+	Then run:
+	```python3 5_SCRIPTS/recon_plotter_ummc.py 6_OUTPUT/1-CORE_out/triples_run25_sbp/output.dat 6_OUTPUT/2-plotter/triples_run25_sbp```
 
