@@ -1,7 +1,7 @@
 This file details step-by-step instructions on how to create a PJMC run.
 
 **Editing the bash file**  
-Before you do anything in PJMC, make sure your ```~/bash.rc``` file includes the following: 
+Before you do anything in PJMC, make sure your ```~/bashrc``` file includes the following: 
 
         # from Vijay
         module load ROOT/6.24.06-foss-2021b
@@ -19,7 +19,7 @@ Before you do anything in PJMC, make sure your ```~/bash.rc``` file includes the
         export G4REALSURFACEDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/RealSurface2.2
         export G4SAIDXSDATA=/umbc/rs/pi_gobbert/common/PromptGamma/geant4-install-seq/share/Geant4-10.7.3/data/G4SAIDDATA2.0
 
-Then run the command: source ~/bashrc to update. If it worked, you should see no output.
+Then run the command: ```source ~/bashrc``` to update. If it worked, you should see no output.
 
 **Creating a run**  
 Start an interactive job using the following command: 
