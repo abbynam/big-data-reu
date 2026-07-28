@@ -21,10 +21,12 @@ Before you do anything in PJMC, make sure your ~/bash.rc file includes the follo
 
 Then run the command: source ~/bashrc to update. If it worked, you should see no output.
 
-**Creating a run**
+**Creating a run** 
 Start an interactive job using the following command: 
 
+'''
 srun --cluster=chip-cpu --account=cybertrn --qos=shared --time=02:50:00 --mem=16G --pty /bin/bash
+'''
 
 Then, navigate to 1-PJMC/runs and copy the example run. Rename it appropriately. 
 
