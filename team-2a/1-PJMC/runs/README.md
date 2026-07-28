@@ -21,7 +21,7 @@ Before you do anything in PJMC, make sure your ~/bash.rc file includes the follo
 
 Then run the command: source ~/bashrc to update. If it worked, you should see no output.
 
-**Creating a run** 
+**Creating a run**  
 Start an interactive job using the following command: 
 
 ```
