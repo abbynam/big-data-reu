@@ -1,0 +1,21 @@
+$ srun --cluster=chip-cpu --account=pi_gobbert --partition=2024 --qos=shared --mem=40G --pty /bin/bash
+or
+$ srun --cluster=chip-cpu --account=cybertrn --partition=2024 --qos=shared --mem=40G --pty /bin/bash
+
+$ unset PYTHONPATH
+
+$ conda activate /home/hlewis3/conda/mcde
+
+$ python ../../scripts/MCDE_Main_Script_ErgInit_Peter_3e9.py
+or
+$ sbatch run_chip.slurm 
+	to get output in ./slurm/
+
+$ more slurm/*
+
+oldslurm/ used
+	/umbc/rs/cybertrn/reu2025/team2/PG_DICOM_cat/1-item1_PG_cat.csv
+	/umbc/rs/cybertrn/reu2025/team2/PG_DICOM_cat/1-item1_511_cat.csv
+
+newslurm/ used the water phantom contour in ../../csv_in
+

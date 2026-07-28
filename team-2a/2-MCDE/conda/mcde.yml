@@ -1,0 +1,11 @@
+name: mcde
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy=1.24
+  - matplotlib=3.3.0
+  - pandas
+  - openpyxl
+  - scipy
+prefix: /umbc/rs/pi_gobbert/users/hlewis3/conda_envs/mcde
