@@ -57,5 +57,5 @@ cd version0
 cat metrics.csv
 ```
 
-**ADDITIONAL INFO**
+**ADDITIONAL INFO**  
 Each run of GridSearch will generate a new folder that contains information about the hyperparameters that were used for that run. Within the version0 folder containing the metrics.csv, a yaml file will also be generated with the hyperparamters used for deciding future runs.
