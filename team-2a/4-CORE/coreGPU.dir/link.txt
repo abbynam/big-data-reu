@@ -1,1 +1,0 @@
-/cm/local/apps/gcc/11.2.0/bin/c++  -std=c++11 -g -O3 -Wall -Wno-reorder -fno-omit-frame-pointer -fopenmp CMakeFiles/coreGPU.dir/src/runRecon.cu.o CMakeFiles/coreGPU.dir/cmake_device_link.o -o coreGPU   -L/usr/ebuild/installs/software/CUDA/12.9.0/targets/x86_64-linux/lib/stubs  libcore_objects.a -lcudadevrt -lcudart_static -lrt -lpthread -ldl
