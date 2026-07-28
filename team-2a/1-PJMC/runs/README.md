@@ -1,6 +1,6 @@
 This file details step-by-step instructions on how to create a PJMC run.
 
-**Editing the bash file**
+**Editing the bash file**  
 Before you do anything in PJMC, make sure your ~/bash.rc file includes the following: 
 
         # from Vijay
