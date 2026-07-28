@@ -296,6 +296,7 @@ For the following input:
 
 the output is 
 
+```
     It took 257.826 seconds
     Final pixel coincidence count was: 344
     Final missed counts was: 1.79383e+06
@@ -318,11 +319,11 @@ the output is
     Percent inter-module triples detected: 0.00462695
     Number inter-module triples detected: 8
     Dead time percentage: 0.88225
+```
 
-	
-	EXAMPLE OUTPUT
------------------------
+Example output:  
 
+```
 $ python scripts/MCDE_Main_Script_ErgInit_Peter_3e9.py 
 Sim Number: 5
 Beam energy (MeV): 199
@@ -449,6 +450,6 @@ single 511 included: 6.8908e+06
 double 511 included: 2.7181e+06
 triple 511 included: 1.21404e+06
 Starting pixel indexing
-
+```
 
 
