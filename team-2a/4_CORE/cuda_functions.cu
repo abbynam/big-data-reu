@@ -1,4 +1,4 @@
-#include <stdio.h>
+a#include <stdio.h>
 #include <math.h>
 #include <cstring>
 #include "cuda_fp16.h"
