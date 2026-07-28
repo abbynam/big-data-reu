@@ -30,31 +30,46 @@ srun --cluster=chip-cpu --account=cybertrn --qos=shared --time=02:50:00 --mem=16
 
 Then, navigate to 1-PJMC/runs and copy the example run. Rename it appropriately. 
 
+```
 cp -r example abby_test1
+```
 
-Edit the run.slurm file. You should change: 
-job-name 
-array (1-3%3 is sufficient for test runs) 
-account to cybertrn
+Edit the run.slurm file. You should change the following fields:  
 
-If necessary, edit and change the parameters.mac file
-/beam/position
-/beam/energy
-/run/beamOn → the number of events
+- job-name 
+- array (1-3%3 is sufficient for test runs) 
+- account (to cybertrn)
+
+If necessary, also edit and change the appropriate fields in the parameters.mac file:  
+
+- /beam/position
+- /beam/energy
+- /run/beamOn → represents the number of events
 
 Submit the run.slurm file as a job. You should see 3 jobs in the queue (if using array=1-3%3)
 
+```
 sbatch run.slurm
-squeue -u $USER
+```
 
-Navigate (cd) into the root directory. If you do not have a compiled.root file, go back to the previous folder level (cd ..) and run the following: 
+Navigate into the root directory. If you see that you do not have a compiled.root file, go back to the previous folder level and run the following: 
 
+```
 hadd root/compiled.root root/Team2*.root
-(**you can also rewrite the compiled.root by running: hadd -f root/compiled.root root/Team2*.root)
+```
+
+(You can also rewrite the compiled.root by running: hadd -f root/compiled.root root/Team2*.root)
 
 Turn the compiled.root into a CSV by running the following. 
-Make sure you run this first: pip install uproot
+Make sure you run this first: 
 
+```
+pip install uproot
+```
+
+Then:
+```
 python ../../scripts/converter_core.py "$(pwd)"
+```
 
 The csv directory of your run folder should contain a 511 (annihilation data, high energy collisions) and PG (lower energy collisions) csv. 
