@@ -58,7 +58,7 @@ Navigate into the root directory. If you see that you do not have a compiled.roo
 hadd root/compiled.root root/Team2*.root
 ```
 
-(You can also rewrite the compiled.root by running: hadd -f root/compiled.root root/Team2*.root)
+(You can also rewrite the compiled.root by running: ```hadd -f root/compiled.root root/Team2*.root```)
 
 Turn the compiled.root into a CSV by running the following. 
 Make sure you run this first: 
