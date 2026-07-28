@@ -13,6 +13,6 @@ python ../../../csvToNpy.py ../../farshad/<folder name>/AllEventsCombined_M400-s
 to convert the CSV to numpy arrays.
 ```
 
-- **FOR REORIENTATION ONLY:** (example) python ../../../csvToNpy.py AllEventsCombined_M400-scatters-UnPhy_3x_reoriented90.csv
-  - You should see X.npy and Y.npy in your subdirectory in farshad-converted. 
+- **FOR REORIENTATION ONLY:** (example) ```python ../../../csvToNpy.py AllEventsCombined_M400-scatters-UnPhy_3x_reoriented90.csv```
+  - You should see ```X.npy``` and ```Y.npy``` in your subdirectory in ```farshad-converted```. 
 
