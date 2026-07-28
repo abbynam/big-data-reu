@@ -75,8 +75,8 @@ in the detSimFuctRepo.py file. By default it assumes the same directoy as the .p
 	txt_in/muList_501x1001.txt
 
 *** Required python packages ***
-Use pjmc conda environment
-	conda activate pjmc_conda
+Use pjmc conda environment  
+```conda activate pjmc_conda```
 
 ***************************************
 *** Variable Declarations and Usage ***
