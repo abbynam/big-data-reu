@@ -1,6 +1,6 @@
 Team 2a of the Big Data REU program at UMBC for Summer 2026
 
-**Team Members:** Ayan Kabaria, Muhammad Khalid, Sophia Lopez, Abby Nam, Ertan Doga, Sidhya Pathak, Victor Sandrin, Xueying Sun
+**Team Members:** Ayan Kabaria, Muhammad Khalid, Sophia Lopez, Abby Nam, Ertan Dogan, Sidhya Pathak, Victor Sandrin, Xueying Sun
 
 **Graduate Research Assistants, Mentors & Collaborators:** Ehsan Shakeri, Harrison Lewis, Hussam Fateen, Matthias K. Gobbert, Farshad Safavi, Ananta Chalise, Lei Ren, Stephen W. Peterson, and Jerimy C. Polf
 
