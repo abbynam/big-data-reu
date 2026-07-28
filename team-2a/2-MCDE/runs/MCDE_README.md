@@ -1,10 +1,8 @@
 MONTE CARLO PLUS DETECTOR EFFECTS (MCDE) README
 
-Author: Paul Maggi, paul.e.maggi@gmail.com
-Date: July 2020
-MODIFIED
-hlewis3
-2025/07/14
+Author: Paul Maggi, paul.e.maggi@gmail.com  
+Date: July 2020  
+MODIFIED hlewis3 2025/07/14
 
 ********************
 *** Description *** 
@@ -321,6 +319,7 @@ the output is
     Number inter-module triples detected: 8
     Dead time percentage: 0.88225
 
+	
 	EXAMPLE OUTPUT
 -----------------------
 
