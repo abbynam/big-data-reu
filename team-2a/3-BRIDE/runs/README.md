@@ -17,7 +17,7 @@ to convert the CSV to numpy arrays.
   - You should see ```X.npy``` and ```Y.npy``` in your subdirectory in ```farshad-converted```.
 
 **Predictions**  
-This is essentially the same workflow as BRIDE. Again, the ```farshad``` datasets are used as an example for the naming convention.
+This is essentially the same workflow as BRIDE (See Testing_README.md) Again, the ```farshad``` datasets are used as an example for the naming convention.
 
 Create a new directory using mkdir in 3-BRIDE/runs following the convention: ```1_farshad_pred```. 
 - *FOR REORIENTATION ONLY:* Follow the convention ```##_farshad_reorient_pred```.
