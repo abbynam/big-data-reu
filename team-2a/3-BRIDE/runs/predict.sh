@@ -1,18 +1,21 @@
 #!/bin/bash
-#SBATCH --job-name=                                 
-#SBATCH --mem=48G                                   
-#SBATCH --nodes=1               # num nodes: for now, we are doing all prediction runs at 1
-#SBATCH --gres=gpu:1            # num gpus per node: for now, we are doing all prediction runs at 1
-#SBATCH --ntasks-per-node=1     # num gpus per node: for now, we are doing all prediction runs at 1
-#SBATCH --time=0-3:00:00
-#SBATCH --constraint=rtx_6000   # see hpcf website
-#SBATCH --error=slurm_output/slurm_pred.err
-#SBATCH --output=slurm_output/slurm_pred.out
+#SBATCH --job-name=demo_run                
+#SBATCH --output=slurm/output
+#SBATCH --error=slurm/error
+#SBATCH --account=pi_gobbert
+#SBATCH --ntasks=1                     
+#SBATCH --cpus-per-task=1              
+#SBATCH --time=10:20:00                
+#SBATCH --mem=48G                     
+#SBATCH --cluster=chip-gpu
+#SBATCH --gres=gpu:1                   
+#SBATCH --constraint='L40S|RTX_8000|RTX_6000'  # Request L40S, RTX_8000, RTX_6000 GPUs
+#SBATCH --partition=gpu 
 
 # variables
-run_id=''  # CHANGE THIS
+run_id='demo'  # CHANGE THIS
 # shouldn't change variables below
-PROGRAM_BASE=/umbc/rs/cybertrn/reu2025/team2/research/base
+PROGRAM_BASE=/umbc/rs/cybertrn/reu2026/team2/research/3-BRIDE
 config_path='../../config/'
 config_path+=${run_id}
 config_path+='.yaml'
@@ -42,7 +45,8 @@ version=$(ls | grep '^version_[0-9]\+$' | cut -c2- | sort -n | tail -n1 | sed 's
 echo "using version: "${version}
 cd - 
 # do rest of run
-srun python3 ../../eval/eval.py -o b -p eval/${run_id}/ -t logs/csv_logs/${run_id}/lightning_logs/${version}/
-echo "finished running eval.py"
+#srun python3 ../../eval/eval.py -o b -p eval/${run_id}/ -t logs/csv_logs/${run_id}/lightning_logs/${version}/
+echo "eval.py skipped"
+#echo "finished running eval.py"
 conda deactivate
 echo "conda environment deactivated."
