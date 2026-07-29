@@ -1,0 +1,12 @@
+name: pjmc_conda
+channels:
+  - defaults
+dependencies:
+  - pip
+  - numpy
+  - uproot
+  - scikit-learn
+  - pandas
+  - matplotlib
+  - openpyxl
+prefix: /umbc/rs/pi_gobbert/users/hlewis3/conda_envs/pjmc_conda

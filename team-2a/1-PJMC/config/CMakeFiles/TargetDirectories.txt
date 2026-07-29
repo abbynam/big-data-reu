@@ -1,0 +1,7 @@
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/install/strip.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/install/local.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/POLARIS3.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/install.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/list_install_components.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/edit_cache.dir
+/home/hs50610/team2/team2_PJMC/PJMC_READY/CMakeFiles/rebuild_cache.dir

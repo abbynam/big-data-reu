@@ -1,0 +1,1 @@
+/usr/ebuild/installs/software/CUDA/12.9.0/bin/nvcc -forward-unknown-to-host-compiler -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink --options-file CMakeFiles/coreGPU.dir/deviceObjects1.rsp -o CMakeFiles/coreGPU.dir/cmake_device_link.o --options-file CMakeFiles/coreGPU.dir/deviceLinkLibs.rsp -L"/usr/ebuild/installs/software/CUDA/12.9.0/lib"
