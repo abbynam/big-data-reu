@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --cluster=chip-gpu
-#SBATCH --job-name=MCDE_Process            # Job name
+#SBATCH --job-name=MCDE_abbytest            # Job name
 #SBATCH --mem=48G                      # Job memory request
 #SBATCH --gres=gpu:1                   # Number of requested GPU(s)
 #SBATCH --time=10:30:00                  # Time limit days-hrs:min:sec
@@ -8,31 +8,28 @@
 #SBATCH --error=slurm/error               # Error file name
 #SBATCH --output=slurm/output
 
-if [ -f "model-final" ] || [ -d "model-final" ]
-then
-    scancel $SLURM_ARRAY_JOB_ID
-else
+echo "Job started"
 
-    module load Anaconda3/2024.02-1
-    source /usr/ebuild/software/emerald/software/Anaconda3/2024.02-1/bin/activate
-    echo -e "Output\n---\n"
-    echo "activating conda environment"
-    eval "$(conda shell.bash hook)"
+module load Anaconda3/2024.02-1
 
-    unset PYTHONPATH
-    source /usr/ebuild/installs/software/Anaconda3/2024.02-1/etc/profile.d/conda.sh
+# Proper conda initialization for batch jobs
+source /usr/ebuild/installs/software/Anaconda3/2024.02-1/etc/profile.d/conda.sh
 
-    ### choose which environment carefully
-    conda activate mcde
-    echo "conda environment activated"
+echo "Activating conda environment..."
+conda activate /umbc/rs/cybertrn/users/anam2/conda_envs/bride
+echo "Conda activated"
 
-    # debugging flags
-    #export NCCL_DEBUG=INFO
-    #export PYTHONFAULTHANDLER=1
+# sanity checks (VERY important for debugging)
+echo "Python location:"
+which python
+python --version
+python -c "import sys; print(sys.executable)"
 
-    ### choose file name and then args 
-    srun python3 ../../scripts/MCDE_Main_Script_ErgInit_Peter_3e9.py
-    conda deactivate
-    echo "conda environment deactivated"
-fi
+echo "Running script..."
 
+srun python ../../scripts/MCDE_Main_Script_ErgInit_Peter_3e9.py
+
+echo "Script finished"
+
+conda deactivate
+echo "Job done"
