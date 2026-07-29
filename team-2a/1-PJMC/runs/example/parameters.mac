@@ -1,0 +1,214 @@
+#
+# Macro file for the initialization phase of "POLARIS3.cc"
+# when runing in interactive mode
+#
+#  Sets some default verbose
+#
+/control/verbose 0
+/run/verbose 0
+/tracking/verbose 0
+/beam/verbose 0
+/analysis/verbose 0
+#
+#
+###  PHYSICS  ###
+#
+### Some of the possible physics options: QGSP_BIC, QGSP_BIC_EMY, QGSP_BIC_EMZ, QGSP_BIC_EMZ_RAD, QGSP_BIC_HP, QGSP_BIC_HP_EMZ
+### These options are fully described in PhysicsList.cc and closely follow the lists found in: source/physics_lists/lists
+### Physics lists declared locally in order to allow for greater flexibility (like using different em physics lists)
+### QGSP_BIC_EMZ_RAD is the default option, use QGSP_BIC to disable Doppler Broadening
+#
+/physics/addPhysics QGSP_BIC_EMZ_RAD
+#
+#
+###  GEOMETRY  ###
+#
+### The geometry of the system can be modified via the macro commands below.
+### Default values are set in DetectorConstruction::SetDefaultValues().  
+#
+#  World / Perimeter Settings
+#
+/polaris/setWorldMaterial      Air      # options: Air (default), Air300K, Water, Tissue, Vacuum
+/polaris/setPerimeterMaterial  Air      # options: Air (default), Air300K, Water, Tissue, Vacuum
+#
+#  DICOM Settings
+#
+#/polaris/loadDicomFiles        No                     # Yes (places dicom images from "dicom" folder inside target, reshapes target) / No (default, uses target volume)
+#/polaris/useDicomPosition      No                      # Yes (use DICOM positioning from DICOM image) / No (default, uses position from setDicomPosition command, default is (0,0,0))
+#/polaris/setDicomPosition      0.5 12.6486 13.883 mm    # position of center of DICOM image / default is (0,0,0)
+#/polaris/setDicomRotation      180 270 0 deg   # sets rotation (about x-axis y-axis z-axis) of DICOM image / default is 180 90 0 deg -> in 
+#
+#  Target Settings
+#
+/polaris/setTargetMaterial     HDPE       # options: Water (default), Air, Carbon, Nitrogen, Oxygen, Phosphorus, Calcium, Copper, Lead, Lucite, BoneEqPlas, tissue
+/polaris/setTargetDepth        300.00 mm   # along z-direction (default: 32 cm, target centered on isocenter)
+#/polaris/setTargetWidth        600.00 mm   # along x & y-directions (default: 17 cm, target centered on isocenter)
+#
+/polaris/setTargetWidthX       500.00 mm   # along x-direction (default: 17 cm, target centered on isocenter)
+/polaris/setTargetWidthY       500.00 mm   # along y-direction (default: 17 cm, target centered on isocenter)
+#/polaris/setTargetDepth        300.00 mm   # along z-direction (default: 32 cm, target centered on isocenter)
+#
+#  POLARIS 3 Detector Settings
+#  - detector box is currently a 60 x 40 x 300 mm box centered around each detector (with auto-adjustment for change in detector size)
+#
+/polaris/EnergyUncertainty        No               # Yes / No (default), include detector energy uncertainty in the recorded energy deposition values
+/polaris/DetectorResolution    0.0   0.0   0.0 mm   # spatial resolution (x, y, z) of detector (truncates positions accordingly), using 0.0 mm (default) does no truncation
+/polaris/DetectorBoxDims     060.0 020.0 60.0 mm   # dimensions (x, y, z) of all detector boxes (default: 60 40 300 mm)
+/polaris/setDetBoxMaterial        Air            # options: Aluminum, (default), Air, Vacuum  [ignored if detector boxes not included]
+
+
+##################################
+                    ##############
+#   CAMERA MODULES  ##############
+                    ##############
+##################################
+#  POLARIS 3 Detector 01
+##################################
+
+
+#  - arrangement of N (default is four) modules (2 x 2 crystals) all in one line (along +z axis in geant4 coordinates)
+#  - all modules will be identical to module 1 (only translated in +z with module gap)
+#
+/polaris/includeDetector01         Yes           # Yes (default) / No, include detector 01
+/polaris/setDet01material          CZT           # detector one crystal material / options: CZT (default), Germanium, NaI, BGO, Xenon
+/polaris/setDet01numModules        1             # set number of modules along +z axis in detector 01 (default: 4, maximum: 4)
+/polaris/setDet01position  184 200 425 mm  # positon (x, y, z) of center of detector 01 (default: 0 100 0 mm)
+/polaris/setDet01crysDims  020.0 015.0 020.0 mm  # dimensions (x, y, z) of detector 01 crystals (default: 20 10 20 mm)
+/polaris/setDet01moduleGap         10.0 mm        # gap between modules (detector is 2 x 2 array of modules, default: 10 mm)
+/polaris/setDet01crysGap           5.00 mm       # gap between crystals (module is 2 x 2 array of crystals, default: 2.5 mm)
+/polaris/setDet01modRotation  0.0 90.0 90.0 deg    # sets rotation of modules about x-axis y-axis z-axis / default is 0 0 0 deg -> in XZ plane
+#
+#  POLARIS 3 Detector 02
+#  - same arrangement as detector 01 (only change in y-position and crystal thickness)
+#
+/polaris/includeDetector02         Yes           # Yes (default) / No, include detector 02
+/polaris/setDet02material          CZT           # detector two crystal material / options: CZT (default), Germanium, NaI, BGO, Xenon
+/polaris/setDet02numModules        1             # set number of modules along +z axis in detector 02 (default: 4, maximum: 4)
+/polaris/setDet02position  -184 200 425 mm  # positon (x, y, z) of center of detector 02 (default: 0 100 0 mm)
+/polaris/setDet02crysDims  020.0 015.0 020.0 mm  # dimensions (x, y, z) of detector 02 crystals (default: 20 10 20 mm)
+/polaris/setDet02moduleGap        10.00 mm       # gap between modules (detector is 2 x 2 array of modules, default: 10 mm)
+/polaris/setDet02crysGap           5.00 mm       # gap between crystals (module is 2 x 2 array of crystals, default: 2.5 mm)
+/polaris/setDet02modRotation  0.0 90.0 90.0 deg    # sets rotation of modules about x-axis y-axis z-axis / default is 0 0 0 deg -> in XZ plane
+#
+#  POLARIS 3 Detector 03
+#  - same arrangement as detector 01 (only change in y-position and crystal thickness)
+#
+/polaris/includeDetector03         Yes          # Yes / No (default), include detector 03
+/polaris/setDet03material          CZT           # detector three crystal material / options: CZT (default), Germanium, NaI, BGO, Xenon
+/polaris/setDet03numModules        1             # set number of modules along +z axis in detector 03 (default: 4, maximum: 4)
+/polaris/setDet03position  184 -200.0 425 mm # positon (x, y, z) of center of detector 03 (default: 0 100 0 mm)
+/polaris/setDet03crysDims  020.0 015.0 020.0 mm  # dimensions (x, y, z) of detector 03 crystals (default: 20 10 20 mm)
+/polaris/setDet03moduleGap        10.00 mm       # gap between modules (detector is 2 x 2 array of modules, default: 10 mm)
+/polaris/setDet03crysGap           5.00 mm       # gap between crystals (module is 2 x 2 array of crystals, default: 2.5 mm)
+/polaris/setDet03modRotation  0.0 90.0 90.0 deg    # sets rotation of modules about x-axis y-axis z-axis / default is 0 0 0 deg -> in XZ plane
+#
+#  POLARIS 3 Detector 04
+#  - same arrangement as detector 01 (only change in y-position and crystal thickness)
+#
+/polaris/includeDetector04         Yes          # Yes / No (default), include detector 04
+/polaris/setDet04material          CZT           # detector four crystal material / options: CZT (default), Germanium, NaI, BGO, Xenon
+/polaris/setDet04numModules        1            # set number of modules along +z axis in detector 04 (default: 4, maximum: 4)
+/polaris/setDet04position  -184 -200.0 425 mm  # positon (x, y, z) of center of detector 04 (default: 0 100 0 mm)
+/polaris/setDet04crysDims  020.0 015.0 020.0 mm  # dimensions (x, y, z) of detector 04 crystals (default: 20 10 20 mm)
+/polaris/setDet04moduleGap        10.00 mm       # gap between modules (detector is 2 x 2 array of modules, default: 10 mm)
+/polaris/setDet04crysGap           5.00 mm       # gap between crystals (module is 2 x 2 array of crystals, default: 2.5 mm)
+/polaris/setDet04modRotation  0.0 90.0 90.0 deg    # sets rotation of modules about x-axis y-axis z-axis / default is 0 0 0 deg -> in XZ plane
+#
+#  Production Cuts / Step Size
+#
+/polaris/setProductionCuts    0000.100 mm   # Productions cuts for all particles (default: 1.0 mm)
+/polaris/setPerimeterStepMax  1000.000 mm   # Forced Step Size in perimeter (old: 1 mm)
+/polaris/setTargetStepMax     1.000 mm   # Forced Step Size in target (old: 1 mm) / determines histogram spacing in target
+/polaris/setDetectorStepMax   1.000 mm   # Forced Step Size in detector (0.1 mm for electron tracking)
+#
+###  ANALYSIS  ###
+#
+### The data stored in the ROOT file can be adjusted with the following macro commands.
+### Please see the README file or the RootAnalysis class for a full description of the options.
+### The default values are hard-coded into the RootAnalysis class code.  
+#
+## Detector Scatter Settings
+/analysis/SingleScatter 	   Yes        # Yes / No (default) - store single scatters  
+/analysis/SingleOrMultiStage      Both    # Single / Multi / Both / None (default) - store single detector multi-scatters, multi detector multi-scatters, Both, or Neither.
+/analysis/DoubleOrTripleScatter   Both      # Double / Triple / Both / None (default) - store double or triple scatters or both or neither.
+## Tracking Settings
+/analysis/TrackGammaScatter       Both # Primaries (default) / Scatters / Both - default (Primaries) is to only track primary gammas (trackID = 1, i.e. comes directly from source), Scatters tracks only scattered gammas (from anywhere, more details in scatterData TTree)
+/analysis/GammaScatterNumber      None    # None (default) / Single / Multiple / Any - default (None) will not store gammas that scatter outside of detector crystals, Single tracks single scatters, Multiple tracks multiple scatters (including Single), Any tracks zero, single and multiple scatters
+/analysis/GammaScatterLocation    Both    # Target (default) / Detector / Both / Any - default (Target) will only store gammas scattered in Target, Detector will store gammas scattered in Detector, Both stores scatters in Target or Detector, Any stores gammas scattered from anywhere
+/analysis/TrackElectrons          No        # Yes / No (default) - tracks electrons and adds additional output to scatterData TTree - Not Fully Functional
+## Data Output Settings
+/analysis/PerfectOrRealData       Real      # Perfect (default) / Real - perfect data is Comp only for singles, Comp->PE/PP for doubles, and Comp->Comp->Any for triples; real is any scatters (exclude Rayleigh)
+/analysis/StoreScatterData        Yes       # Yes (default) / No - whether to store scatterData (full scattered gamma data) TTree in ROOT output file
+/analysis/StoreReconData          No       # Yes / No (default) - whether to store reconData (reconstruction-formatted scatter data) TTree in ROOT output file
+/analysis/StoreDicomDose          No       # Yes / No (default) - whether to store 3D dose Histogram (same volume as target) 
+#/analysis/Store3DPG              No       # Yes / No (default) - whether to store 3D PG   Histogram (same volume as target) 
+
+#
+#  File Settings
+#
+/analysis/allowFileRewriting      Yes       # Yes / No (default), allow writing over files, or create file with new seed
+#
+#
+###  Switch to Idle State  ###
+#
+/run/initialize
+
+###  SOURCE  ###
+#
+### There are a number of possible source configuration.  Here are some common examples: 
+###    - Simple pencil beam of protons        -> Settings: /beam/particle proton, source: point,     direction: 0.0 0.0 -1.0
+###    - Isotropic gamma point source         -> Settings: /beam/particle gamma,  source: isotropic, direction: 0.0 1.0 0.0
+###    - Directional gamma point source       -> Settings: /beam/particle gamma,  source: point,     direction: 0.0 1.0 0.0
+###    - Co-60 gamma source (energy only)     -> Settings: /beam/particle gamma,  source: co60,      direction: 0.0 1.0 0.0
+###    - Use phase space file as source input -> Settings: /beam/usePhaseSpace Yes
+#
+#  Phase Space Settings [over-rides all other /beam commands]
+#   -> NOTE: Be sure to check that target volume matches the output of the phase space file!
+#
+/beam/usePhaseSpace           No       # Yes / No (default), ignores all other /beam/commands
+/beam/phaseSpaceFilename      data/ProtonPG_70MeV_water_fullMC_50x10k.root  # phase space filename (only works for ROOT files with PhaseSpace TTree)
+/beam/psProtonInelasticOnly   Yes 	   # Yes / No (default), loads only proton inelastic gammas if Yes
+#
+#  Particle Type, Source, Position, Direction
+#
+/beam/particle    proton               # options: proton (default), gamma, e-, neutron
+/beam/source      point                # options: point (default), isotropic (ignores /beam/mom settings), co60 (randomly selects between 1.17 and 1.33 MeV)
+### use if proton source
+#If X is positive Z = 265.8883   ----> (263.8883+2.0)
+#If X is negative Z = -238.1117  ----> (-236.1117-2.0)
+#beam/position      X     Y       Z
+/beam/position    0 0 151  mm     # proton source [make sure starts within world volume -> use: (targetDepth / 2) + 1 mm]
+/beam/direction   0.0 0.0 -1.0         # proton source (-z-direction is towards the target)
+#  Beam Energy: Gaussian Distribution
+#
+/beam/energy      200.0    MeV        # beam energy / default: 150 MeV
+/beam/ene/sigma    0.5 MeV          # beam energy sigma / default: 0.4 MeV
+#
+#  Beam Position: Source Constraints
+#
+/beam/pos/width_x  000.0 mm            # beam width / default: 0.0 mm
+/beam/pos/width_y  000.0 mm            # beam width / default: 0.0 mm
+/beam/pos/width_z  000.0 mm            # beam width / default: 0.0 mm / proton: only use if beam not along z-direction
+#
+#  Beam Position: Gaussian Distribution
+#
+/beam/pos/sigma_x 3.958   mm            # position sigma / default: 0.0 mm
+/beam/pos/sigma_y 3.865    mm            # position sigma / default: 0.0 mm
+/beam/pos/sigma_z  0.000 mm            # position sigma / default: 0.0 mm / proton: only use if beam not along z-direction
+#
+#  Beam Momentum: Angular Distribution
+#
+/beam/mom/sigma_x  000.000 mrad        # direction sigma / default: 0.0 / gamma: ~200 mrad,  proton: ~10 mrad
+/beam/mom/sigma_y    0.000 mrad        # direction sigma / default: 0.0 / gamma: do not use, proton: ~10 mrad
+/beam/mom/sigma_z  000.000 mrad        # direction sigma / default: 0.0 / gamma: ~300 mrad,  proton: do not use
+#  Number of Particles
+#
+/analysis/setScreenDumpNo 10000        # increment of screen dump (default: None)
+/run/beamOn 10000000
+#
+#
+#
+#
+
+
+
